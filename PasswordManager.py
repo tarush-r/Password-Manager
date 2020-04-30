@@ -131,7 +131,7 @@ class RegisterPage(Frame):
 
 
 
-        registerbtn=Button(self,width=20,text='Login',bg='gray36',fg='lemon chiffon', command=lambda: passman.createUser(userfield, passfield, controller))
+        registerbtn=Button(self,width=20,text='Register',bg='gray36',fg='lemon chiffon', command=lambda: passman.createUser(userfield, passfield, controller))
         registerbtn.configure(font=('Calibri Light', 10))
         registerbtn.grid(row=3, columnspan=2, pady=20)
 
