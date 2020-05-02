@@ -99,7 +99,12 @@ def createUser(userfield, passfield, controller):
 			})
 		controller.show_frame("LoginPage")
 		
-		
+def backToStart(controller):
+	controller.show_frame("StartPage")
+
+def logout(controller):
+	loginSuccess=False
+	controller.show_frame("StartPage")
 
 
 def login(userfield, passfield, controller):

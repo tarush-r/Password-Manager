@@ -84,6 +84,9 @@ class LoginPage(Frame):
         loginbtn=Button(self,width=20,text='Login',bg='gray36',fg='lemon chiffon',command=lambda: passman.login(userfield, passfield, controller))
         loginbtn.configure(font=('Calibri Light', 10))
         loginbtn.grid(row=3, columnspan=2, pady=20)
+        backbtn=Button(self,width=10,text='Back',bg='gray36',fg='lemon chiffon',command=lambda: passman.backToStart(controller))
+        backbtn.grid(row=4, columnspan=2, pady=10)
+        # passman.backToStart(controller)
 # class LoginPage(Frame):
 #     def __init__(self, parent, controller):
 #         Frame.__init__(self, parent)
@@ -128,12 +131,15 @@ class RegisterPage(Frame):
         passfield=Entry(self,width=40)
         passfield.config({'background': 'gray80'})
         passfield.grid(row=2, column=1, pady=10)
-
+        
 
 
         registerbtn=Button(self,width=20,text='Register',bg='gray36',fg='lemon chiffon', command=lambda: passman.createUser(userfield, passfield, controller))
         registerbtn.configure(font=('Calibri Light', 10))
         registerbtn.grid(row=3, columnspan=2, pady=20)
+        backbtn=Button(self,width=10,text='Back',bg='gray36',fg='lemon chiffon',command=lambda: passman.backToStart(controller))
+        backbtn.grid(row=4, columnspan=2, pady=10)
+
 
 
 
@@ -180,6 +186,8 @@ class MainPage(Frame):
         addbtn.configure(font=('Calibri Light', 10))
         
         addbtn.grid(row=3, column=0, padx=10, pady=10, columnspan=2)
+        logoutbtn=Button(addapp,width=10,text='Logout',bg='gray36',fg='lemon chiffon',command=lambda: passman.logout(controller))
+        logoutbtn.grid(row=4, column=0, padx=10, pady=5, columnspan=2)
 
         addapp.pack(side=RIGHT)
         sbr.pack(side=RIGHT, fill="y")
