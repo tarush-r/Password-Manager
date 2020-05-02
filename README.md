@@ -3,6 +3,7 @@ Encrypts(AES encryption) and stores all your credentials in firebase firestore. 
 
 ![](images/first.jpg)
 ![](images/main.jpg)
+![](images/generate.jpg)
 ![](images/login.jpg)
 ![](images/register.jpg)
 
