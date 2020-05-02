@@ -1,9 +1,9 @@
 from tkinter import *              
 from tkinter import font  as tkFont 
 import passman
-# import tkFont
-# from PyInstaller.utils.hooks import collect_data_files
-# datas = collect_data_files('grpc')
+from tkinter.ttk import Combobox
+import tkinter.ttk as ttk
+import random
 
 class SampleApp(Tk):
 
@@ -17,7 +17,7 @@ class SampleApp(Tk):
         container.place(relx=0.5, rely=0.5, anchor=CENTER)
 
         self.frames = {}
-        for F in (StartPage, LoginPage, RegisterPage, MainPage):
+        for F in (StartPage, LoginPage, RegisterPage, MainPage, Choice, GenPass):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -53,8 +53,6 @@ class StartPage(Frame):
         ,width=20,height=3, command=lambda: controller.show_frame("LoginPage"))
         signinbtn.configure(font=('Calibri Light', 10))
         signinbtn.grid(row=0,column=2, padx=10)
-        # self.pack(expand=True)
-        # self.place(relx=0.5, rely=0.5, anchor=CENTEsR)
 
 
 class LoginPage(Frame):
@@ -86,21 +84,106 @@ class LoginPage(Frame):
         loginbtn.grid(row=3, columnspan=2, pady=20)
         backbtn=Button(self,width=10,text='Back',bg='gray36',fg='lemon chiffon',command=lambda: passman.backToStart(controller))
         backbtn.grid(row=4, columnspan=2, pady=10)
-        # passman.backToStart(controller)
-# class LoginPage(Frame):
-#     def __init__(self, parent, controller):
-#         Frame.__init__(self, parent)
-#         self.controller = controller
-#         loginTitle=Label(self, text="Login").grid(row=0, column=0)
-#         ginTitle=Label(self, text="Login").grid(row=1, column=0)
-#         lonTitle=Label(self, text="Login").grid(row=2, column=0)
-#         logiitle=Label(self, text="Login").grid(row=3, column=0)
-#         oginTitle=Label(self, text="Login").grid(row=4, column=0)
-#         loinTitle=Label(self, text="Login").grid(row=5, column=0)
-#         logiTitle=Label(self, text="Login").grid(row=6, column=0)
-#         loginTtle=Label(self, text="Login").grid(row=7, column=0)
-#         loginTite=Label(self, text="Login").grid(row=8, column=0)
+
+
+class Choice(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        self.controller = controller
+        self.configure(bg='gray12')
+        credbtn=Button(self, text='Credentials',width=20,height=3,
+                bg='gray36',fg='lemon chiffon',
+                 command=lambda: controller.show_frame("MainPage"))
+        credbtn.configure(font=('Calibri Light', 10))
+        credbtn.grid(row=0,column=0, padx=10)
+        orlbl=Label(self,text="OR",bg='gray12', fg='lemon chiffon').grid(row=0,column=1)
+
+        genbtn=Button(self, text='Generate Password', bg='gray36',fg='lemon chiffon' 
+        ,width=20,height=3, command=lambda: controller.show_frame("GenPass"))
+        genbtn.configure(font=('Calibri Light', 10))
+        genbtn.grid(row=0,column=2, padx=10)
+
+
+class GenPass(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        self.controller=controller
+        self.configure(bg='gray12')
+        def low(): 
+            entry.delete(0, END) 
         
+            length = var1.get() 
+        
+            lower = "abcdefghijklmnopqrstuvwxyz"
+            upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            digits = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()"
+            password = "" 
+        
+            if var.get() == 1: 
+                for i in range(0, length): 
+                    password = password + random.choice(lower) 
+                return password 
+        
+            elif var.get() == 0: 
+                for i in range(0, length): 
+                    password = password + random.choice(upper) 
+                return password 
+        
+            elif var.get() == 3: 
+                for i in range(0, length): 
+                    password = password + random.choice(digits) 
+                return password 
+            else: 
+                print("Please choose an option") 
+        
+        
+        def generate(): 
+            password1 = low() 
+            entry.insert(10, password1)  
+
+        var = IntVar() 
+        var1 = IntVar() 
+        
+        title=Label(self, text="Generate Password",bg='gray12', fg='lemon chiffon', pady=10)
+        title.configure(font=('Calibri Light', 20))
+        title.grid(row=0,column=0,padx=10,pady=5, columnspan=5)
+        Random_password = Label(self, text="Password",bg='gray12', fg='lemon chiffon') 
+        Random_password.grid(row=1,column=0,padx=10,pady=5) 
+        entry = Entry(self)
+
+        entry.grid(row=1, column=1,padx=10,pady=5) 
+        
+        c_label = Label(self, text="Length",bg='gray12',fg='lemon chiffon') 
+        c_label.grid(row=2,column=0,padx=10,pady=5) 
+        
+        
+        generate_button = Button(self, text="Generate", command=generate,bg='gray36',fg='lemon chiffon') 
+        generate_button.configure(font=('Calibri Light', 10))
+        generate_button.grid(row=2, column=2,columnspan=2,padx=10,pady=5)
+        backbtn=Button(self,text='Back', width=5, bg='gray36',fg='lemon chiffon',command=lambda: passman.takeMeTo(controller, "Choice"))
+        backbtn.configure(font=('Calibri Light', 10))
+        backbtn.grid(row=2, column=3, padx=10, pady=5, columnspan=2) 
+        
+        myColor = 'gray12'                 
+                
+
+        s = ttk.Style()                     
+        s.configure('Wild.TRadiobutton',background=myColor,foreground='lemon chiffon')   
+        radio_low = ttk.Radiobutton(self, text="Low", variable=var, value=1,style = 'Wild.TRadiobutton')
+        radio_low.grid(row=1, column=2, sticky='E',padx=10,pady=5) 
+        radio_middle = ttk.Radiobutton(self, text="Medium", variable=var, value=0,style = 'Wild.TRadiobutton') 
+        radio_middle.grid(row=1, column=3, sticky='E',padx=10,pady=5) 
+        radio_strong = ttk.Radiobutton(self, text="Strong", variable=var, value=3,style = 'Wild.TRadiobutton') 
+        radio_strong.grid(row=1, column=4, sticky='E',padx=10,pady=5) 
+        combo = Combobox(self, textvariable=var1,width=17) 
+
+        # Combo Box for length of your password 
+        combo['values'] = (8, 9, 10, 11, 12, 13, 14, 15, 16, 
+                        17, 18, 19, 20, 21, 22, 23, 24, 25, 
+                        26, 27, 28, 29, 30, 31, 32, "Length") 
+
+        combo.bind('<<ComboboxSelected>>') 
+        combo.grid(column=1, row=2,padx=10,pady=5)
 
 class RegisterPage(Frame):
     def __init__(self, parent, controller):
@@ -117,14 +200,7 @@ class RegisterPage(Frame):
         userfield=Entry(self, width=40)
         userfield.config({'background': 'gray80'})
         userfield.grid(row=1, column=1, pady=20)
-        
-        # userlbl=Label(self,text='Username',bg='gray12').grid(row=1, column=0, pady=10, padx=10)
-        # userfield=Entry(self, width=60)
-        # userfield.grid(row=1, column=1, pady=10)
 
-        # passlbl=Label(self,text='Password',bg='gray12').grid(row=2, column=0, pady=10, padx=10)
-        # passfield=Entry(self,width=60)
-        # passfield.grid(row=2, column=1, pady=10)
         passlbl=Label(self,text='Password',bg='gray12', fg='lemon chiffon')
         passlbl.configure(font=('Calibri Light', 12))
         passlbl.grid(row=2, column=0, pady=5, padx=20)
@@ -200,16 +276,6 @@ class MainPage(Frame):
         refreshbtn.configure(font=('Calibri Light', 10))
         refreshbtn.pack(pady=10)
 
-# class PageTwo(Frame):
-
-#     def __init__(self, parent, controller):
-#         tk.Frame.__init__(self, parent)
-#         self.controller = controller
-#         label = Label(self, text="This is page 2", font=controller.title_font)
-#         label.pack(side="top", fill="x", pady=10)
-#         button = Button(self, text="Go to the start page",
-#                            command=lambda: controller.show_frame("StartPage"))
-#         button.pack()
 
 
 

@@ -103,9 +103,14 @@ def backToStart(controller):
 	controller.show_frame("StartPage")
 
 def logout(controller):
+	loginid="default"
+	loginpass="default"
 	loginSuccess=False
 	controller.show_frame("StartPage")
 
+
+def takeMeTo(controller, name):
+	controller.show_frame(name)
 
 def login(userfield, passfield, controller):
 	global loginid, loginpass, loginSuccess, counter
@@ -123,7 +128,7 @@ def login(userfield, passfield, controller):
 			print(str(security.decrypt(apps[0].to_dict()['username'], loginpass)[2:-1]))
 			if str(security.decrypt(apps[0].to_dict()['username'], loginpass))[2:-1]==loginid and str(security.decrypt(apps[0].to_dict()['password'], loginpass))[2:-1]==loginpass:
 				loginSuccess=True
-				controller.show_frame("MainPage")
+				controller.show_frame("Choice")
 				messagebox.showinfo("Success", "Login Successful")
 			else:
 				messagebox.showinfo("Error", "Invalid Credentials")
