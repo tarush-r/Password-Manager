@@ -69,11 +69,5 @@ The user manual, which contains instructions to use the software and shows execu
 <img src="images/generate.jpg">
 <img src="images/login.jpg">
 <img src="images/register.jpg">
-![](images/first.jpg)
-![](images/second.jpg)
-![](images/main.jpg)
-![](images/generate.jpg)
-![](images/login.jpg)
-![](images/register.jpg)
 
 
