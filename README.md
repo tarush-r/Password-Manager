@@ -63,6 +63,12 @@ Cryptodomex – To encrypt the passwords of the user so that they are not visibl
 The user manual, which contains instructions to use the software and shows execution details is also uploaded. requirements.txt lists all the requirements to run the software.
 
 <img src="images/VideoRec.gif">
+<img src="images/first.jpg">
+<img src="images/second.jpg">
+<img src="images/main.jpg">
+<img src="images/generate.jpg">
+<img src="images/login.jpg">
+<img src="images/register.jpg">
 ![](images/first.jpg)
 ![](images/second.jpg)
 ![](images/main.jpg)
