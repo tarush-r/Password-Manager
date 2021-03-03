@@ -7,4 +7,5 @@ Encrypts(AES encryption) and stores all your credentials in firebase firestore. 
 ![](images/generate.jpg)
 ![](images/login.jpg)
 ![](images/register.jpg)
+<img src="images/VideoRec.gif">
 
