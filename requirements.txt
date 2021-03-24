@@ -40,7 +40,7 @@ pywin32==227
 pywin32-ctypes==0.2.0
 PyYAML==5.3.1
 requests==2.23.0
-rsa==4.0
+rsa==4.1
 shellescape==3.8.1
 six==1.14.0
 sqlparse==0.3.1
