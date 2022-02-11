@@ -26,7 +26,7 @@ idna==2.9
 msgpack==1.0.0
 Naked==0.1.31
 pefile==2019.4.18
-protobuf==3.11.3
+protobuf==3.15.0
 psycopg2==2.8.5
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
